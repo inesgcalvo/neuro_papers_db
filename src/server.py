@@ -35,7 +35,7 @@ st.markdown(background_style, unsafe_allow_html = True)
 # DataFrames
 df_journals = pd.read_csv('../data/journals/journal_info.csv')
 df_countries = pd.read_csv('../data/countries_db.csv')
-df_articles = pd.read_csv('../data/articles_df.csv')
+df_articles = pd.read_csv('../data/articles/articles_df.csv')
 df_universities = pd.read_csv('../data/universities_db.csv', index_col=False)[['Rank_2024', 'Institution_Name', 'Location', 'Academic_Reputation']]
 
 
@@ -50,14 +50,14 @@ def intro():
         st.image(np_log_white_path)
     with main_field:
         st.write('###### The Neuroscience publications database')
-        st.balloons()
-        st.snow()
-        st.toast('Mr Stay-Puft ')
-        st.error('Error message')
-        st.warning('Warning message')
-        st.info('Info message')
-        st.success('Success message')
-        st.exception(e)
+        # st.balloons()
+        # st.snow()
+        st.toast('Cartelito')
+        st.error('Red')
+        # st.warning('Warning message')
+        # st.info('Info message')
+        # st.success('Success message')
+        # st.exception('Error Raised By me')
 
 
 
