@@ -34,7 +34,7 @@ This project involved the creation of a database of neuroscience publications. T
 Subsequently, the data was enriched with geographical coordinates, links to journals, and other relevant information
 
 <div align="center">
-  <a><img src="images/chips.png" alt="." width="50"></a>
+  <a><img src="images/loguin.png" alt="." width="50"></a>
 </div><br />
 
 
@@ -120,7 +120,9 @@ Together with the data cleansing process, additional information was **enriched*
 
 <!-- LOADING -->
 ## Loading
-Using the wonderful **SQLAlchemy** library, the dataframes were directly inserted into the neuropapers db. **MySQL** was employed to confirm the data quality and establish relationships between the tables.
+Thanks to the powerful **SQLAlchemy** library, the relational SQL database was created, relationships between tables were established, and tables were filled. Finally, **MySQL** software was used to check the viability of the data. The database architecture adheres to the following schema.
+
+<div align="center"><a><img src="images/neuropapers_db_structure.png" alt="neuropapers_db" width="700"></a></div><br />
 
 <p align="right">(<a href="#readme">Back to top</a>)</p>
 
@@ -131,7 +133,7 @@ Using the wonderful **SQLAlchemy** library, the dataframes were directly inserte
 I performed data visualization using a variety of tools, ranging from Python libraries like **pylab** and **seaborn** to software such as **Tableau** and **MySQL**. Additionally, I utilized mapping libraries like **folium** and **pydeck** for the creation of maps. Not forgetting the development of a web application using **streamlit**.
 
 <div align="center">
-  <a><img src="images/chips.png" alt="." width="50"></a>
+  <a><img src="images/loguin.png" alt="." width="50"></a>
 </div><br />
 
 
