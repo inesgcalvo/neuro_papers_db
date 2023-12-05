@@ -59,11 +59,11 @@ def constant_columns(df):
     """
     cte_cols = []
     cte_str_cols = []
-    for col in df.select_dtypes(include = np.number):
-        if len(df[col].unique()) == 1:
-            cte_cols.append(col)          
-    for col in df.select_dtypes(include = 'object'):
-        if len(df[col].unique()) == 1:
+    for col in df.select_dtypes(include=np.number):
+        if len(df[col].apply(lambda x: tuple(x) if isinstance(x, list) else x).unique()) == 1:
+            cte_cols.append(col)
+    for col in df.select_dtypes(include='object'):
+        if len(df[col].apply(lambda x: tuple(x) if isinstance(x, list) else x).unique()) == 1:
             cte_str_cols.append(col)
     return cte_cols, cte_str_cols
 

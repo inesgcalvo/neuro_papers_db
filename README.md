@@ -34,7 +34,7 @@ This project involved the creation of a database of neuroscience publications. T
 Subsequently, the data was enriched with geographical coordinates, links to journals, and other relevant information
 
 <div align="center">
-  <a><img src="images/chips.PNG" alt="." width="50"></a>
+  <a><img src="images/chips.png" alt="." width="50"></a>
 </div><br />
 
 
@@ -44,8 +44,10 @@ Subsequently, the data was enriched with geographical coordinates, links to jour
   <summary>Project Creation Summary</summary>
   <ol><h4>Data Extraction:</h4></ol>
     <ol><ol><h6>
-    <a href="https://www.scimagojr.com/">SCImago (SJR)</a>, <a href="https://www.oecd.org/">OECD (© Organisation for Economic Co-operation and Development)</a>, <a href="https://pubmed.ncbi.nlm.nih.gov/">PubMed®</a>, <a href="https://www.topuniversities.com/v2">QS Top Universities</a>, <a href="https://www.wikipedia.org/">Wikipedia</a>, ...
-    </h6></ol></ol>
+    <a href="https://www.scimagojr.com/">SCImago</a> (SJR), <a href="https://www.oecd.org/">OECD</a> (© Organisation for Economic Co-operation and Development), <a href="https://pubmed.ncbi.nlm.nih.gov/">PubMed®</a>, <a href="https://www.topuniversities.com/v2">QS Top Universities</a>, <a href="https://www.wikipedia.org/">Wikipedia</a>, 
+    <a href="https://genderize.io/">Geocoding</a> (Google Maps) and
+    <a href="https://developers.google.com/maps/documentation/geocoding/start">genderize</a>.<br>
+    </ol></ol></h6>
   <ol><h4>Data Transformation:</h4></ol>
     <ol><ol><h6>pandas, geopy, ...</h6></ol></ol>
   <ol><h4>Data Loading:</h4></ol>
@@ -99,7 +101,9 @@ For the creation of neuropapers database, a diverse range of sources has been ut
   <a href="https://pubmed.ncbi.nlm.nih.gov/">PubMed</a> and 
   <a href="https://search.crossref.org/">Crossref</a><br></ol>
     - API data extraction with <span style="font-family:Courier; color:orange">requests</span> from:<br><ol>
-    <a href="https://genderize.io/">genderize API</a>.<br></ol>
+    <a href="https://genderize.io/">Geocoding</a> (Google Maps) and
+    <a href="https://developers.google.com/maps/documentation/geocoding/start">genderize</a>.<br>
+    </ol>
   </h4></p></div>
 
 <p align="right">(<a href="#readme">Back to top</a>)</p>
@@ -127,7 +131,7 @@ Using the wonderful **SQLAlchemy** library, the dataframes were directly inserte
 I performed data visualization using a variety of tools, ranging from Python libraries like **pylab** and **seaborn** to software such as **Tableau** and **MySQL**. Additionally, I utilized mapping libraries like **folium** and **pydeck** for the creation of maps. Not forgetting the development of a web application using **streamlit**.
 
 <div align="center">
-  <a><img src="images/chips.PNG" alt="." width="50"></a>
+  <a><img src="images/chips.png" alt="." width="50"></a>
 </div><br />
 
 
