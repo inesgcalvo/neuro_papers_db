@@ -18,8 +18,21 @@ def create_dictio(df):
             column_types[e]='FLOAT'
         elif ('int' in str(df[e].dtype)):
             column_types[e]='INT'
+        elif e == 'abstract':
+            column_types[e]='TEXT'
+        elif e == 'title':
+            column_types[e]='TEXT'
+        elif e == 'categories':
+            column_types[e]='TEXT'
+        elif e == 'authors':
+            column_types[e]='TEXT'
+        elif e == 'terms':
+            column_types[e]='TEXT'
         else:
-            column_types[e]='VARCHAR'
+            try:
+                column_types[e]='VARCHAR(300)'
+            except:
+                column_types[e]='TEXT'
     return column_types
 
 
@@ -56,7 +69,7 @@ def create_tables(db_structure, cursor):
     - None
     '''
     for table, keys in db_structure.items():
-        df = pd.read_csv(f'../../data/neuropapers_db/{table}.csv')
+        df = pd.read_csv(f'../data/neuropapers_db/{table}.csv')
         # Call create_table
         create_table(table, create_dictio(df), cursor)
         if 'primary_keys' in keys:
@@ -74,6 +87,23 @@ def create_tables(db_structure, cursor):
 
 
 
+# def insert_values(table_name, df, cursor):
+#     '''
+#     Insert values into a SQL table based on the specified DataFrame.
+
+#     Parameters:
+#     - table_name (str): The name of the table to insert values into.
+#     - df (pandas.DataFrame): The DataFrame containing the values to be inserted.
+#     - cursor (cursor): The cursor object to execute SQL queries.
+
+#     Returns:
+#     - None
+#     '''
+#     column_names = ', '.join(df.columns)
+#     for i in range(df.shape[0]):     
+#         values = tuple(df.iloc[i].values)   
+#         cursor.execute(f'INSERT INTO `{table_name}` ({column_names}) VALUES  {values};')
+
 def insert_values(table_name, df, cursor):
     '''
     Insert values into a SQL table based on the specified DataFrame.
@@ -86,7 +116,10 @@ def insert_values(table_name, df, cursor):
     Returns:
     - None
     '''
-    column_names = ','.join(df.columns)
+    column_names = ', '.join(df.columns)
+    placeholders = ', '.join(['%s' for _ in range(len(df.columns))])
+
     for i in range(df.shape[0]):     
-        values = tuple(df.iloc[i].values)   
-        cursor.execute(f'insert into `{table_name}` ({column_names}) values {values};')
+        values = tuple(df.iloc[i].values)
+        query = f'INSERT INTO `{table_name}` ({column_names}) VALUES ({placeholders});'
+        cursor.execute(query, values)

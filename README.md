@@ -33,13 +33,9 @@
 This project involved the creation of a database of neuroscience publications. To achieve this, the first step was to gather information about journals with the highest impact factor in the field of neuroscience (SJR). Afterward, PubMed was scraped to retrieve all publications published in these journals between 2010 and 2023.
 Subsequently, the data was enriched with geographical coordinates, links to journals, and other relevant information
 
-<div align="center">
+<div align="center"><br>
   <a><img src="images/loguin.png" alt="." width="50"></a>
-</div><br />
-
-
-
-
+</div><br>
 <details>
   <summary>Project Creation Summary</summary>
   <ol><h4>Data Extraction:</h4></ol>
