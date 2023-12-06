@@ -87,23 +87,6 @@ def create_tables(db_structure, cursor):
 
 
 
-# def insert_values(table_name, df, cursor):
-#     '''
-#     Insert values into a SQL table based on the specified DataFrame.
-
-#     Parameters:
-#     - table_name (str): The name of the table to insert values into.
-#     - df (pandas.DataFrame): The DataFrame containing the values to be inserted.
-#     - cursor (cursor): The cursor object to execute SQL queries.
-
-#     Returns:
-#     - None
-#     '''
-#     column_names = ', '.join(df.columns)
-#     for i in range(df.shape[0]):     
-#         values = tuple(df.iloc[i].values)   
-#         cursor.execute(f'INSERT INTO `{table_name}` ({column_names}) VALUES  {values};')
-
 def insert_values(table_name, df, cursor):
     '''
     Insert values into a SQL table based on the specified DataFrame.
