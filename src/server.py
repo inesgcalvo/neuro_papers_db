@@ -1,4 +1,4 @@
-# Web application with streamlit
+# Web App with streamlit
 
 ''' TERMINAL
 cd .\_clase\_FINAL_PROJECT_\neuro_papers_db\src\
@@ -49,7 +49,6 @@ def intro():
 
 
 
-
 def universities():
     # DataFrame
     df_universities = pd.read_csv('../data/universities/universities_db.csv', index_col=False)[['Rank_2024', 'Institution_Name', 'Location', 'Academic_Reputation']]
@@ -73,12 +72,9 @@ def universities():
 
 
 
-
-
 def countries():
     # DataFrame
     df_countries = pd.read_csv('../data/neuropapers_db/countries.csv')
-
     # sidebar
     OECD_logo = '../images/logo_OECD.png'
     OECD_iLib_logo = '../images/logo_oecdilibrary.png'
@@ -86,26 +82,21 @@ def countries():
     st.sidebar.markdown("Organisation for Economic Co-operation and Development.")
     st.sidebar.image(OECD_iLib_logo)
     st.sidebar.markdown("OECD iLibrary is OECD’s Online Library for books, papers and statistics and the gateway to OECD's analysis and data.")   
-
     # main
     st.markdown('#### Countries Research and development (R&D)')
-
     mln_cols = ['mln_2010', 'mln_2011', 'mln_2012', 'mln_2013', 'mln_2014', 'mln_2015', 'mln_2016', 'mln_2017', 'mln_2018', 'mln_2019', 'mln_2020', 'mln_2021']
     gdp_cols = ['gdp_2010', 'gdp_2011', 'gdp_2012', 'gdp_2013', 'gdp_2014', 'gdp_2015', 'gdp_2016', 'gdp_2017', 'gdp_2018', 'gdp_2019', 'gdp_2020', 'gdp_2021']
     tot_cols = ['tot_2010', 'tot_2011', 'tot_2012', 'tot_2013', 'tot_2014', 'tot_2015', 'tot_2016', 'tot_2017', 'tot_2018', 'tot_2019', 'tot_2020', 'tot_2021']
     wom_cols = ['wom_2010', 'wom_2011', 'wom_2012', 'wom_2013', 'wom_2014', 'wom_2015', 'wom_2016', 'wom_2017', 'wom_2018', 'wom_2019', 'wom_2020', 'wom_2021']
-
     df_countries['mln'] = df_countries.apply(lambda row: row[mln_cols].tolist(), axis=1)
     df_countries['gdp'] = df_countries.apply(lambda row: row[gdp_cols].tolist(), axis=1)
     df_countries['tot'] = df_countries.apply(lambda row: row[tot_cols].tolist(), axis=1)
     df_countries['wom'] = df_countries.apply(lambda row: row[wom_cols].tolist(), axis=1)
-
     df = pd.DataFrame({'Country': df_countries['official_state_name'],
                        'Gross domestic spending (%)': df_countries['gdp'],
                        'Million US dollars': df_countries['mln'],
                        'Total Researchers': df_countries['tot'],
                        'Women Researchers': df_countries['wom']})
-
     # filters
     selection = st.multiselect('Select the index', 
                                 ['Gross domestic spending (%)', 'Million US dollars', 'Total Researchers', 'Women Researchers'], 
@@ -118,8 +109,13 @@ def countries():
                                 'Gross domestic spending (%)': st.column_config.LineChartColumn("GDS: [2010 - 2021]", y_min=0),
                                 'Million US dollars': st.column_config.LineChartColumn("MLN: [2010 - 2021]", y_min=0),
                                 'Total Researchers': st.column_config.LineChartColumn("TOT: [2010 - 2021]", y_min=0),
-                                'Women Researchers': st.column_config.LineChartColumn("WOM: [2010 - 2021]", y_min=0),})
-    
+                                'Women Researchers': st.column_config.LineChartColumn("WOM: [2010 - 2021]", y_min=0),},
+                 width=700, height=400)
+    st.divider()
+    st.markdown('###### Linear regression of the geographical coordinates of the affiliations')
+    scatter_map = '../images/affiliations_scatter.png'
+    st.image(scatter_map)
+
 
 
 def journals():
@@ -130,7 +126,6 @@ def journals():
     # main
     st.markdown('#### Journals')
     selected_journal = st.selectbox("Select a Journal:", df_articles['journal'].unique())
-
     A, B = st.columns([1, 5])
     column = 'title'
     with A:
@@ -151,26 +146,25 @@ def publications():
     # main
     st.markdown('#### Publications')
     html_powerbi = '<iframe title="neuropapers_db" width="700" height="300" src="https://app.powerbi.com/reportEmbed?reportId=2bc58e54-5ce2-458e-8160-13bb75ca498d&autoAuth=true&ctid=4380e7a1-c525-44fc-b9e4-a02e0dda4d80" frameborder="0" allowFullScreen="true"></iframe>'
-    # html_powerbi = '<iframe title="neuropapers_db" width="1140" height="541.25" src="https://app.powerbi.com/reportEmbed?reportId=2bc58e54-5ce2-458e-8160-13bb75ca498d&autoAuth=true&ctid=4380e7a1-c525-44fc-b9e4-a02e0dda4d80" frameborder="0" allowFullScreen="true"></iframe>'
     st.markdown(html_powerbi, unsafe_allow_html=True)
     st.divider() 
     powerbi_url = 'https://app.powerbi.com/groups/me/reports/2bc58e54-5ce2-458e-8160-13bb75ca498d/ReportSection4a4973d3a6499760c280?experience=power-bi'
     st.markdown(f'[Interactive visualization in PowerBI]({powerbi_url})')
 
-    
+
 
 def model():
+    # sidebar
+    where = '../images/where.png'
+    st.sidebar.image(where)
     # Load the trained Decision Tree model and Label Encoder
     # dtc_model = joblib.load('your_model_filename.pkl')
     # label_encoder = joblib.load('your_label_encoder_filename.pkl')
-
     # main
     st.markdown('#### Journal Prediction App')
-
     # User Input
     title_input = st.text_input("Enter Title:")
     abstract_input = st.text_input("Enter Abstract:")
-
     # Make Predictions on Button Click
     if st.button("Predict"):
         if title_input and abstract_input:
