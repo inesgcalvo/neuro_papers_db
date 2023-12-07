@@ -14,6 +14,10 @@ import streamlit as st
 
 from support_server import *
 
+import joblib
+from support_model import predict_journal
+
+
 # DataFrame
 df_articles = pd.read_csv('../data/neuropapers_db/publications.csv')
 
@@ -155,14 +159,38 @@ def publications():
 
     
 
+def model():
+    # Load the trained Decision Tree model and Label Encoder
+    # dtc_model = joblib.load('your_model_filename.pkl')
+    # label_encoder = joblib.load('your_label_encoder_filename.pkl')
+
+    # main
+    st.markdown('#### Journal Prediction App')
+
+    # User Input
+    title_input = st.text_input("Enter Title:")
+    abstract_input = st.text_input("Enter Abstract:")
+
+    # Make Predictions on Button Click
+    if st.button("Predict"):
+        if title_input and abstract_input:
+            predictions = predict_journal(title_input, abstract_input, dtc_model, label_encoder)
+            st.write("Predictions:")
+            for entry in predictions:
+                st.write(f"Journal: {entry['journal']}, Probability: {entry['probability']}")
+        else:
+            st.warning("Please enter both Title and Abstract for prediction.")
+
 
 
 page_names_to_funcs = {'Home': intro,
                        'Top Universities': universities,
                        'Countries R+D': countries,
                        'Journals': journals,
-                       'Publications': publications}
+                       'Publications': publications,
+                       'Journal Prediction App': model}
     
+
 
 pages = st.sidebar.selectbox('', page_names_to_funcs.keys())
 page_names_to_funcs[pages]()
