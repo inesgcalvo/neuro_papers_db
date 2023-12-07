@@ -15,15 +15,11 @@ import streamlit as st
 from support_server import *
 
 import joblib
-from support_model import predict_journal
+from support_model import predict_journal_for_input
 
 
 # DataFrame
 df_articles = pd.read_csv('../data/neuropapers_db/publications.csv')
-
-# 'pub_id', 'journal_id', 'last_revision', 'volume', 'title', 'pages', 
-# 'DOI', 'authors', 'journal', 'abstract', 'abstract_words', 
-# 'keywords', 'terms', 'pub_type', 'citation', 'publication_year', 'pub_date'
 
 
 
@@ -45,7 +41,6 @@ def intro():
                          228898 **researchers**  
                          133194 **affiliations**'''     
         st.markdown(information)
-    # st.divider() 
 
 
 
@@ -157,21 +152,21 @@ def model():
     # sidebar
     where = '../images/where.png'
     st.sidebar.image(where)
-    # Load the trained Decision Tree model and Label Encoder
-    # dtc_model = joblib.load('your_model_filename.pkl')
-    # label_encoder = joblib.load('your_label_encoder_filename.pkl')
+    # Load the trained model and the Label Encoder
+    model = joblib.load('../model/qda_model.pkl')
+    label_encoder = joblib.load('../model/label_encoder.pkl')
     # main
     st.markdown('#### Journal Prediction App')
-    # User Input
+    # input
     title_input = st.text_input("Enter Title:")
     abstract_input = st.text_input("Enter Abstract:")
-    # Make Predictions on Button Click
+    # predictions
     if st.button("Predict"):
         if title_input and abstract_input:
-            predictions = predict_journal(title_input, abstract_input, dtc_model, label_encoder)
-            st.write("Predictions:")
+            predictions = predict_journal_for_input(title_input, abstract_input, model, label_encoder)
             for entry in predictions:
-                st.write(f"Journal: {entry['journal']}, Probability: {entry['probability']}")
+                st.success(f"### {entry['journal']}")
+                st.metric("Probability", round(entry['probability'], 4), "-90%") 
         else:
             st.warning("Please enter both Title and Abstract for prediction.")
 
