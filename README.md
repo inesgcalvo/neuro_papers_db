@@ -141,10 +141,10 @@ I performed data visualization using a variety of tools, ranging from Python lib
 
 <!-- MODELING -->
 ## Modeling
-I have created a model to predict in which journal it is more likely to submit your publication given the title and abstract. To achieve this, I preprocessed data from titles and abstracts, converted them into tensors with `tensorflow`, and reduced their dimensionality. Finally, the data has been fed into various classification models. Among them, I ultimately chose to use `DecisionTreeClassifier()`.
+I have created a model to predict in which journal it is more likely to submit your publication given the title and abstract. To achieve this, I preprocessed data from titles and abstracts, converted them into tensors with `tensorflow`, and reduced their dimensionality. Finally, the data has been fed into various classification models. Among them, I ultimately chose to use `QuadraticDiscriminantAnalysis()`.
 
 <div align="center"><br>
-  <a><img src="images/loguin.png" alt="." width="50"></a>
+  <a><img src="images/where.png" alt="." width="100"></a>
 </div><br>
 
 <p align="right">(<a href="#readme">Back to top</a>)</p>
