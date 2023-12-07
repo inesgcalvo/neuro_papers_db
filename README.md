@@ -33,9 +33,6 @@
 This project involved the creation of a database of neuroscience publications. To achieve this, the first step was to gather information about journals with the highest impact factor in the field of neuroscience (SJR). Afterward, PubMed was scraped to retrieve all publications published in these journals between 2010 and 2023.
 Subsequently, the data was enriched with geographical coordinates, links to journals, and other relevant information
 
-<div align="center"><br>
-  <a><img src="images/loguin.png" alt="." width="50"></a>
-</div><br>
 <details>
   <summary>Project Creation Summary</summary>
   <ol><h4>Data Extraction:</h4></ol>
@@ -53,7 +50,9 @@ Subsequently, the data was enriched with geographical coordinates, links to jour
   <ol><h4>ML Modeling:</h4></ol>
     <ol><ol><h6>Surprise, surprise, ...</h6></ol></ol>
 </details>
-
+<div align="center"><br>
+  <a><img src="images/loguin.png" alt="." width="50"></a>
+</div><br>
 <p align="right">(<a href="#readme">Back to top</a>)</p>
 
 
@@ -112,7 +111,7 @@ With **pandas**, data cleansing involved the process of detecting and rectifying
 
 Together with the data cleansing process, additional information was **enriched** in the dataset, including geographical coordinates of research centers. This enrichment enhances the dataset by providing supplementary details for a more comprehensive analysis.
 
-
+<p align="right">(<a href="#readme">Back to top</a>)</p>
 
 <!-- LOADING -->
 ## Loading
@@ -128,9 +127,6 @@ Thanks to the powerful **SQLAlchemy** library, the relational SQL database was c
 ## Visualization
 I performed data visualization using a variety of tools, ranging from Python libraries like **pylab** and **seaborn** to software such as **Tableau** and **MySQL**. Additionally, I utilized mapping libraries like **folium** and **pydeck** for the creation of maps. Not forgetting the development of a web application using **streamlit**.
 
-
-
-
 <div align="left">
   <h4 align="left">
     - Top Universities dashboad:<br><ol>
@@ -139,13 +135,6 @@ I performed data visualization using a variety of tools, ranging from Python lib
   <a href="https://app.powerbi.com/links/pVO_KG2UPi?ctid=4380e7a1-c525-44fc-b9e4-a02e0dda4d80&pbi_source=linkShare&bookmarkGuid=502342b6-8416-40e5-bd1e-b3a0f98ffae5">PowerBI</a>.<br></ol>
   </h4></p></div>
 
-<div align="center">
-  <a><img src="images/loguin.png" alt="." width="50"></a>
-</div><br />
-
-
-
-
 <p align="right">(<a href="#readme">Back to top</a>)</p>
 
 
@@ -153,6 +142,10 @@ I performed data visualization using a variety of tools, ranging from Python lib
 <!-- MODELING -->
 ## Modeling
 I have created a model to predict in which journal it is more likely to submit your publication given the title and abstract. To achieve this, I preprocessed data from titles and abstracts, converted them into tensors with `tensorflow`, and reduced their dimensionality. Finally, the data has been fed into various classification models. Among them, I ultimately chose to use `DecisionTreeClassifier()`.
+
+<div align="center"><br>
+  <a><img src="images/loguin.png" alt="." width="50"></a>
+</div><br>
 
 <p align="right">(<a href="#readme">Back to top</a>)</p>
 
